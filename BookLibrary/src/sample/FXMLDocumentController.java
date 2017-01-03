@@ -114,7 +114,6 @@ public class FXMLDocumentController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText(model.getStageTitle() + "\nVersion: 1.2\nMade by: Koaja");
             alert.showAndWait();
-            //text;
         }
     }
 

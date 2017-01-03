@@ -132,8 +132,6 @@ public class Model {
         } else if (search.length() >= 0 && search.length() < 3) {
             lblInfo.setText("For a more precise result please enter a word with a length bigger than 3 letters");
         }
-        txtSearch.clear(); // clears search  field
-        txtSearch.requestFocus(); // sets focus to search field 
     }
 
     // imports any existing library
@@ -261,7 +259,7 @@ public class Model {
         }
     }
 
-    public void deleteBook() {
+    public void deleteBook(Label lblinfo) {
 
         // choice dropdown
         ChoiceDialog<Book> dialog = new ChoiceDialog("", booksCollection);
@@ -278,6 +276,7 @@ public class Model {
             Optional<ButtonType> result2 = alert.showAndWait();
             if (result2.get() == ButtonType.OK) {
                 booksCollection.remove(result.get());
+                lblinfo.setText(result.get() + " has been removed from library.");
             }
         }
     }

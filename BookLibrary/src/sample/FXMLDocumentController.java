@@ -78,7 +78,7 @@ public class FXMLDocumentController implements Initializable {
             // delete book
         } else if (e.getSource() == btnDeleteBook) {
           //  lblInfo.setText("Feature not yet implemented");
-            model.deleteBook();
+            model.deleteBook(lblInfo);
 
             // search book
         } else if (e.getSource() == btnSearchBook) {

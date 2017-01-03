@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="494.0" prefWidth="856.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.FXMLDocumentController">
+   <children>
+      <SplitPane dividerPositions="0.5" layoutX="93.0" layoutY="52.0" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane maxHeight="500.0" maxWidth="305.0" minHeight="500.0" minWidth="305.0" prefHeight="500.0" prefWidth="305.0">
+               <children>
+                  <Label layoutX="5.0" layoutY="12.0" prefHeight="25.0" prefWidth="150.0" text="Book Author" />
+                  <Label layoutX="5.0" layoutY="53.0" prefHeight="25.0" prefWidth="150.0" text="Book Title" />
+                  <Label layoutX="5.0" layoutY="97.0" prefHeight="25.0" prefWidth="150.0" text="Book Genre" />
+                  <TextField fx:id="txtBookAuthor" layoutX="5.0" layoutY="31.0" prefWidth="150.0" />
+                  <TextField fx:id="txtBookTitle" layoutX="5.0" layoutY="72.0" prefWidth="150.0" />
+                  <TextField fx:id="txtBookGenre" layoutX="5.0" layoutY="115.0" prefWidth="150.0" />
+                  <Button fx:id="btnAddBook" layoutX="5.0" layoutY="149.0" mnemonicParsing="false" onAction="#handleButtonAction" prefWidth="75.0" text="Add Book" AnchorPane.leftAnchor="5.0" />
+                  <Label fx:id="lblInfo" alignment="CENTER" layoutX="5.0" layoutY="190.0" maxWidth="500.0" prefHeight="21.0" prefWidth="295.0" style="-fx-border-color: #000; -fx-padding: 1px;" textOverrun="CENTER_ELLIPSIS">
+                     <tooltip>
+                        <Tooltip fx:id="tooltipInfo" wrapText="true">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Tooltip>
+                     </tooltip>
+                  </Label>
+                  <Button fx:id="btnDeleteBook" layoutX="5.0" layoutY="447.0" maxWidth="150.0" mnemonicParsing="false" onAction="#handleButtonAction" prefWidth="75.0" text="Delete" />
+                  <TextField fx:id="txtSearch" layoutX="6.0" layoutY="222.0" prefWidth="200.0" promptText="Search for book here" />
+                  <Button fx:id="btnSearchBook" layoutX="5.0" layoutY="248.0" mnemonicParsing="false" onAction="#handleButtonAction" prefWidth="75.0" text="Search" />
+                  <Button fx:id="btnClearSearch" layoutX="216.0" layoutY="222.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Clear" />
+                  <Button fx:id="btnShowBooks" layoutX="101.0" layoutY="149.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Display Books" />
+                  <TextArea fx:id="txtSearchDisplay" editable="false" layoutX="6.0" layoutY="274.0" prefHeight="173.0" prefWidth="295.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <MenuBar layoutY="8.0" prefHeight="25.0" prefWidth="530.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <menus>
+                      <Menu mnemonicParsing="false" text="File">
+                        <items>
+                              <Menu mnemonicParsing="false" text="Library">
+                                <items>
+                                    <MenuItem fx:id="menuItemImport" disable="true" mnemonicParsing="false" onAction="#handleButtonAction" text="Import" />
+                                    <MenuItem fx:id="menuItemExport" mnemonicParsing="false" onAction="#handleButtonAction" text="Export" />
+                                </items>
+                              </Menu>
+                              <SeparatorMenuItem mnemonicParsing="false" />
+                          <MenuItem fx:id="menuItemExit" mnemonicParsing="false" onAction="#handleButtonAction" text="Exit" />
+                        </items>
+                      </Menu>
+                      <Menu mnemonicParsing="false" text="Help">
+                        <items>
+                          <MenuItem fx:id="menuItemAbout" mnemonicParsing="false" onAction="#handleButtonAction" text="About" />
+                        </items>
+                      </Menu>
+                    </menus>
+                  </MenuBar>
+                  <TextArea fx:id="txtBooksDisplay" editable="false" layoutY="33.0" prefHeight="459.0" prefWidth="530.0" promptText="Click 'Display Books' to view them" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="33.0" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

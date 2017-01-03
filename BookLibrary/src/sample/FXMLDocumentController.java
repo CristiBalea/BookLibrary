@@ -112,7 +112,7 @@ public class FXMLDocumentController implements Initializable {
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("About");
             alert.setHeaderText(null);
-            alert.setContentText(model.getStageTitle() + "\nVersion: 1.2\nMade by: Koaja");
+            alert.setContentText(model.getStageTitle() + "\nVersion: 1.3\nMade by: Koaja");
             alert.showAndWait();
         }
     }

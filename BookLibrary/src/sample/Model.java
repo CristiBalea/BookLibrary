@@ -262,22 +262,26 @@ public class Model {
     public void deleteBook(Label lblinfo) {
 
         // choice dropdown
-        ChoiceDialog<Book> dialog = new ChoiceDialog("", booksCollection);
+        ChoiceDialog<Book> dialog = new ChoiceDialog(" ", booksCollection);
         dialog.setTitle("Delete prompt");
-        dialog.setContentText("Choose books to delete");
-        Optional<Book> result = dialog.showAndWait();
+        dialog.setContentText("Choose book to delete");
+        Optional<Book> choiceResult = dialog.showAndWait();
 
-        if (result.isPresent()) {
+
+        if (choiceResult.isPresent()) {
             // alert to verify delete
+
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Warning");
-            alert.setHeaderText("Book " + result.get() + " will be deleted.");
+            alert.setHeaderText("Book " + "\n" + choiceResult.get() + " will be deleted.");
             alert.setContentText("You sure you want to purge it ?");
-            Optional<ButtonType> result2 = alert.showAndWait();
-            if (result2.get() == ButtonType.OK) {
-                booksCollection.remove(result.get());
-                lblinfo.setText(result.get() + " has been removed from library.");
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if (result.get() == ButtonType.OK) {
+                booksCollection.remove(choiceResult.get());
+                lblinfo.setText(choiceResult.get() + " has been removed from library.");
             }
+
         }
     }
 }

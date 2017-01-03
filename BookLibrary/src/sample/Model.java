@@ -269,18 +269,16 @@ public class Model {
         dialog.setContentText("Choose books to delete");
         Optional<Book> result = dialog.showAndWait();
 
-        // alert to verify delete
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Warning");
-        alert.setHeaderText("Book " + result.get() + " will be deleted.");
-        alert.setContentText("You sure you want to purge it ?");
-        Optional<ButtonType> result2 = alert.showAndWait();
-
-
         if (result.isPresent()) {
-            if(result2.get() == ButtonType.OK){
+            // alert to verify delete
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Book " + result.get() + " will be deleted.");
+            alert.setContentText("You sure you want to purge it ?");
+            Optional<ButtonType> result2 = alert.showAndWait();
+            if (result2.get() == ButtonType.OK) {
                 booksCollection.remove(result.get());
+            }
         }
     }
-}
 }

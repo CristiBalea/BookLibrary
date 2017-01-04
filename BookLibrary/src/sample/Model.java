@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Optional;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -33,7 +34,12 @@ public class Model {
     private int nrOfBooksFromFile = 0;
 
 
+    public Model(){
+
+    }
+
     public void addBook(Book b) {
+
         booksCollection.add(b);
     }
 
@@ -237,7 +243,6 @@ public class Model {
             Platform.exit();
         } else {
             closeDialog();
-            ;
         }
     }
 
@@ -250,7 +255,7 @@ public class Model {
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Warning");
-        alert.setHeaderText("You have not exported your library and anything you added will be lost.");
+        alert.setHeaderText("Your library is not up-to-date.\nTo Update library go to File -> Library -> Export.");
         alert.setContentText("You sure you want to exit ?");
 
         Optional<ButtonType> result = alert.showAndWait();
@@ -260,13 +265,34 @@ public class Model {
         }
     }
 
+    public boolean closeAppConfirmationDialog(){
+
+        boolean closeApp = false;
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Exit");
+        alert.setHeaderText("You're about to leave the Application\nDid you save?\nTo save library go to File -> Library -> Export.");
+
+        ButtonType Yes = new ButtonType("Yes");
+        ButtonType No = new ButtonType("No");
+        alert.getButtonTypes().setAll(Yes, No);
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if(result.get() != Yes){
+            closeApp = true;
+        }
+
+        return closeApp;
+    }
+
     public void deleteBook(Label lblinfo) {
 
         // choice dropdown
 
         ChoiceDialog<Book> dialog = new ChoiceDialog(booksCollection.get(0),booksCollection);
         dialog.setTitle("Delete prompt");
-        dialog.setContentText("Choose book to delete");
+        dialog.setHeaderText("Choose a book to delete");
+        //dialog.setContentText("Choose book to delete");
         Optional<Book> choiceResult = dialog.showAndWait();
 
 
@@ -274,7 +300,8 @@ public class Model {
             // alert to verify delete
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Warning");
-            alert.setHeaderText("Book " + "\n" + choiceResult.get() + " will be deleted.");
+
+            alert.setHeaderText("Book " + "\n" + choiceResult.get() + " \nwill be deleted.");
             alert.setContentText("You sure you want to purge it ?");
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {

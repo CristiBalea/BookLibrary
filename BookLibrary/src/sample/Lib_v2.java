@@ -11,18 +11,22 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextInputDialog;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+import java.util.Optional;
+
 /**
- *
  * @author Balea Cristian
  */
 public class Lib_v2 extends Application {
-    
+
     private Model model;
-    
+
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
@@ -33,6 +37,10 @@ public class Lib_v2 extends Application {
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
+
+                if(new Model().closeAppConfirmationDialog()){
+                    event.consume();
+                }
 
             }
         });
@@ -47,5 +55,5 @@ public class Lib_v2 extends Application {
 
         launch(args);
     }
-    
+
 }

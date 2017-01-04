@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Optional;
@@ -262,7 +263,8 @@ public class Model {
     public void deleteBook(Label lblinfo) {
 
         // choice dropdown
-        ChoiceDialog<Book> dialog = new ChoiceDialog(" ", booksCollection);
+
+        ChoiceDialog<Book> dialog = new ChoiceDialog(booksCollection.get(0),booksCollection);
         dialog.setTitle("Delete prompt");
         dialog.setContentText("Choose book to delete");
         Optional<Book> choiceResult = dialog.showAndWait();
@@ -270,18 +272,15 @@ public class Model {
 
         if (choiceResult.isPresent()) {
             // alert to verify delete
-
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Warning");
             alert.setHeaderText("Book " + "\n" + choiceResult.get() + " will be deleted.");
             alert.setContentText("You sure you want to purge it ?");
             Optional<ButtonType> result = alert.showAndWait();
-
             if (result.get() == ButtonType.OK) {
                 booksCollection.remove(choiceResult.get());
                 lblinfo.setText(choiceResult.get() + " has been removed from library.");
             }
-
         }
     }
 }
